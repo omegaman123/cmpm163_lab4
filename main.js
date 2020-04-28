@@ -80,6 +80,18 @@ cube3.position.x -= 2;
 cube3.position.y = 2;
 
 
+var uniforms = {texture1: { type: "t", value:
+            THREE.ImageUtils.loadTexture("191.jpg")}};
+material = new THREE.ShaderMaterial({
+    uniforms: uniforms,
+    vertexShader: document.getElementById('vertexShader').textContent,
+    fragmentShader: document.getElementById('fragmentShader').textContent
+});
+var cube4 = new THREE.Mesh(geometry, material);
+scene.add(cube4);
+cube4.position.x = 2;
+cube4.position.y = 2;
+
 
 let c = 0;
 let cstep = 1;
@@ -104,10 +116,8 @@ var geometry2, material2, mesh2;
 
 function addTextureShaderCube() {
     if(count == 2) {
-        let uniforms = {
-            colorB: {type: 'vec3', value: new THREE.Color(0xACB6E5)},
-            colorA: {type: 'vec3', value: new THREE.Color(0x74ebd5)}
-        };
+        var uniforms = {texture1: { type: "t", value:
+                    THREE.ImageUtils.loadTexture("165.jpg")}};
 
         geometry2 = new THREE.BoxGeometry(1, 1, 1);
         material2 =  new THREE.ShaderMaterial({

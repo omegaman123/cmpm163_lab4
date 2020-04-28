@@ -9,7 +9,29 @@
 		</style>
 	</head>
 	<body>
+	<script id="vertexShader" type="x-shader/x-vertex">
+            // code for vertex shader
+            varying vec2 vUv;
+            void main() {
+              vUv = uv;
+              vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+              gl_Position = projectionMatrix * modelViewPosition;
+            }
+            </script>
+
+            <script id="fragmentShader" type="x-shader/x-fragment">
+            // code for fragment shader
+            uniform sampler2D texture1;
+            varying vec2 vUv;
+            void main() {
+                vec2 phase = fract(vUv.xy/ vec2(.5,.5));
+                gl_FragColor = texture2D(texture1, phase);
+            }
+            </script>
 		<script src="three.js"></script>
 		<script src="main.js"></script>
+
+
+
 	</body>
 </html>
